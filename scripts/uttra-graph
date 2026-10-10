@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# uttra graph - ask the platform's map of this project instead of grepping.
+# Answers come from the project graph the platform keeps (files, exported
+# symbols, screens, endpoints, tables, secrets), as plain text.
+set -euo pipefail
+PROGRAM="${0##*/}"
+usage() {
+  cat <<'EOF'
+Usage:
+  uttra-graph who-uses NAME       files importing the file that defines NAME (a symbol or a file path),
+                                  the screens that render it and the endpoints it serves; for a route
+                                  (/api/bookings) the handler and every file that requests it
+  uttra-graph screen ROUTE        the file behind a route, the files it pulls in, the tables and secrets behind it
+  uttra-graph table NAME          columns, the defining file, the files and screens that use a table (or model)
+  uttra-graph find TEXT           files, symbols, screens, endpoints and tables whose name contains TEXT
+  uttra-graph impact PATH         everything a change to PATH reaches
+  uttra-graph brief [WORDS...]    the project brief, focused on WORDS
+Examples:
+  uttra-graph who-uses BookingForm
+  uttra-graph screen /checkout
+  uttra-graph table bookings
+EOF
+}
+die() {
+  printf '%s: %s\n' "$PROGRAM" "$*" >&2
+  exit 2
+}
+[ $# -ge 1 ] || { usage; exit 2; }
+cmd="$1"; shift || true
+case "$cmd" in
+  -h|--help|help) usage; exit 0 ;;
+  who-uses|screen|table|find|impact|brief) ;;
+  *) die "unknown command: $cmd" ;;
+esac
+[ -n "${UTTRA_GRAPH_API:-}" ] || die "UTTRA_GRAPH_API is not set; the project graph is unavailable in this run"
+[ -n "${UTTRA_SCHEDULE_GRANT:-}" ] || die "UTTRA_SCHEDULE_GRANT is not set; the project graph is unavailable in this run"
+command -v curl >/dev/null 2>&1 || die "curl is required"
+q="$*"
+if [ "$cmd" != "brief" ] && [ -z "$q" ]; then
+  die "$cmd needs an argument"
+fi
+# url-encode q (python3 is in every project container; curl's --data-urlencode
+# would turn this into a POST)
+enc=$(printf '%s' "$q" | python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.stdin.read()))' 2>/dev/null || printf '%s' "$q")
+code=0
+out=$(curl -sS --max-time 20 -H "Authorization: Bearer ${UTTRA_SCHEDULE_GRANT}" -H "Accept: text/plain" \
+  "${UTTRA_GRAPH_API}?cmd=${cmd}&q=${enc}" -w '\n__HTTP_%{http_code}') || code=$?
+[ "$code" -eq 0 ] || die "could not reach the project graph (curl exit $code)"
+status="${out##*__HTTP_}"
+body="${out%__HTTP_*}"
+if [ "$status" != "200" ]; then
+  printf '%s\n' "$body" >&2
+  exit 1
+fi
+printf '%s\n' "$body"

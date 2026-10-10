@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# uttra history - this chat's earlier turns, whole, from the platform's record.
+# A session that started fresh sees older turns shortened in its session
+# memory; this prints any of them in full, numbered the same way.
+set -euo pipefail
+PROGRAM="${0##*/}"
+usage() {
+  cat <<'EOF'
+Usage:
+  uttra-history               every turn of this chat, oldest first (the start of each member message)
+  uttra-history N             turn N whole: the member's message word for word, your reply, the files it changed
+  uttra-history find WORDS    the turns whose message or reply mentions every word
+Examples:
+  uttra-history 14
+  uttra-history find logo size
+EOF
+}
+die() {
+  printf '%s: %s\n' "$PROGRAM" "$*" >&2
+  exit 2
+}
+cmd=list
+q=""
+if [ $# -ge 1 ]; then
+  case "$1" in
+    -h|--help|help) usage; exit 0 ;;
+    find)
+      shift
+      cmd=find
+      q="$*"
+      [ -n "$q" ] || die "find needs the words to look for"
+      ;;
+    list) ;;
+    *[!0-9]*|'') die "unknown command: $1 (a turn number, find WORDS, or nothing)" ;;
+    *) cmd=turn; q="$1" ;;
+  esac
+fi
+[ -n "${UTTRA_HISTORY_API:-}" ] || die "UTTRA_HISTORY_API is not set; the chat history is unavailable in this run"
+[ -n "${UTTRA_SCHEDULE_GRANT:-}" ] || die "UTTRA_SCHEDULE_GRANT is not set; the chat history is unavailable in this run"
+command -v curl >/dev/null 2>&1 || die "curl is required"
+# url-encode q (python3 is in every project container; curl's --data-urlencode
+# would turn this into a POST)
+enc=$(printf '%s' "$q" | python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.stdin.read()))' 2>/dev/null || printf '%s' "$q")
+code=0
+out=$(curl -sS --max-time 20 -H "Authorization: Bearer ${UTTRA_SCHEDULE_GRANT}" -H "Accept: text/plain" \
+  "${UTTRA_HISTORY_API}?cmd=${cmd}&q=${enc}" -w '\n__HTTP_%{http_code}') || code=$?
+[ "$code" -eq 0 ] || die "could not reach the chat history (curl exit $code)"
+status="${out##*__HTTP_}"
+body="${out%__HTTP_*}"
+if [ "$status" != "200" ]; then
+  printf '%s\n' "$body" >&2
+  exit 1
+fi
+printf '%s\n' "$body"
