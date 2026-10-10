@@ -106,3 +106,9 @@ a#top {
   animation: uttra-glow 2.4s ease-in-out infinite !important;
 }
 /* @/uttra:rule */
+
+/* @uttra:rule footer.footer > p.footer__copy */
+footer.footer > p.footer__copy {
+  font-size: 28px !important;
+}
+/* @/uttra:rule */
