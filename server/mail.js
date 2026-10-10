@@ -29,7 +29,7 @@ async function sendOrderEmail(o) {
     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
   });
   await t.sendMail({
-    from: `"متجر نسيج" <${process.env.SMTP_USER}>`,
+    from: `"ستنر ليلى" <${process.env.SMTP_USER}>`,
     to: process.env.ORDER_NOTIFY_EMAIL,
     replyTo: undefined,
     subject: `طلب جديد ${o.orderNo} - ${o.total} ر.س`,

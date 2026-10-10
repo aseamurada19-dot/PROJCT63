@@ -1,6 +1,6 @@
 const $ = (s) => document.querySelector(s);
 const state = { cat: "الكل", sort: "new", sizes: {} };
-const CATS = ["الكل", "نسائي", "رجالي", "أطفال", "إكسسوارات"];
+const CATS = ["الكل", "عبايات", "فساتين", "بلايز", "بلاطي", "قمصان نوم", "فساتين سواريه", "أطقم صبايا"];
 
 function card(p) {
   const size = state.sizes[p.id] || p.sizes[0];
