@@ -66,7 +66,7 @@ const Cart = (() => {
     $c("#cartCount").textContent = count();
     const body = $c("#cartItems"), f = $c("#cartFoot");
     if (done) {
-      body.innerHTML = `<div class="done"><h3>شكراً لك!</h3><p>استلمنا طلبك وسنتواصل معك قريباً لتأكيد الشحن.</p></div>`;
+      body.innerHTML = `<div class="done"><h3>شكراً لك!</h3><p>تم استلام طلبك بنجاح.</p><p class="order-no">رقم الطلب: <b dir="ltr">${done.orderNo}</b></p><p>الإجمالي: ${done.total} ر.س (الدفع عند الاستلام)</p><p>سنتواصل معك قريباً لتأكيد الشحن.</p></div>`;
       f.innerHTML = "";
     } else if (!items.length) {
       body.innerHTML = `<p class="empty">سلتك فارغة حالياً.<br>ابدأ بإضافة قطعك المفضلة.</p>`;
@@ -86,13 +86,29 @@ const Cart = (() => {
     const b = e.target.closest("[data-d]");
     if (b) change(+b.dataset.i, +b.dataset.d);
   });
-  $c("#cartFoot").addEventListener("submit", (e) => {
+  $c("#cartFoot").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const order = Object.fromEntries(new FormData(e.target));
-    const orders = JSON.parse(localStorage.getItem("naseej-orders") || "[]");
-    orders.push({ ...order, items, total: subtotal(), date: new Date().toISOString() });
-    localStorage.setItem("naseej-orders", JSON.stringify(orders));
-    items = []; save(); done = true; render();
+    const form = e.target, btn = form.querySelector("button");
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "جارٍ إرسال الطلب...";
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...Object.fromEntries(new FormData(form)),
+          items: items.map(({ id, size, qty }) => ({ id, size, qty })),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "تعذر إرسال الطلب، حاول مرة أخرى.");
+      items = []; save(); done = data; render();
+    } catch (err) {
+      toast(err.message);
+      btn.disabled = false;
+      btn.textContent = label;
+    }
   });
 
   render();

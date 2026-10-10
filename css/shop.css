@@ -50,6 +50,9 @@
 .co .btn { width: 100%; }
 .done { text-align: center; padding: var(--s5) var(--s2); }
 .done h3 { font-size: 1.5rem; margin-bottom: 8px; }
+.order-no { background: var(--sand); border: 1px dashed var(--clay); border-radius: var(--r); padding: 10px; margin: var(--s2) 0; font-size: 1.1rem; }
+.order-no b { color: var(--clay); letter-spacing: .04em; }
+.co .btn:disabled { opacity: .6; cursor: wait; }
 
 .toast { position: fixed; bottom: 24px; inset-inline: 0; margin-inline: auto; width: max-content; max-width: 90%; background: var(--ink); color: #fff; padding: 10px 24px; border-radius: 999px; z-index: 60; opacity: 0; transform: translateY(20px); transition: .25s; pointer-events: none; }
 .toast.show { opacity: 1; transform: none; }

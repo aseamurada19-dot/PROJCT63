@@ -1,7 +1,7 @@
 const U = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=700&q=80`;
 const CLOTH = ["S", "M", "L", "XL"];
 
-window.PRODUCTS = [
+const LIST = [
   { id: 1, name: "فستان كتان طويل", cat: "نسائي", price: 289, sizes: CLOTH, img: U("photo-1515886657613-9f3515b0c78f"), tag: "جديد" },
   { id: 2, name: "بلوزة قطن بأكمام واسعة", cat: "نسائي", price: 149, sizes: CLOTH, img: U("photo-1434389677669-e08b4cac3105") },
   { id: 3, name: "معطف صوف رملي", cat: "نسائي", price: 459, old: 549, sizes: CLOTH, img: U("photo-1539109136881-3be0616acf4b"), tag: "خصم" },
@@ -15,3 +15,5 @@ window.PRODUCTS = [
   { id: 11, name: "وشاح صوف ناعم", cat: "إكسسوارات", price: 99, sizes: ["واحد"], img: U("photo-1520903920243-00d872a2d1c9") },
   { id: 12, name: "حقيبة جلد يومية", cat: "إكسسوارات", price: 349, sizes: ["واحد"], img: U("photo-1548036328-c9fa89d128fa"), tag: "جديد" },
 ];
+if (typeof window !== "undefined") window.PRODUCTS = LIST;
+else module.exports = LIST;
