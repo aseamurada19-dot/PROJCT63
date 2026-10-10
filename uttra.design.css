@@ -1,0 +1,108 @@
+/* Uttra Live Design - style overrides applied from the preview's edit mode.
+   Managed by the platform: rules are keyed by the markers below, so edit
+   values freely but keep each rule inside its own marker pair. */
+/* @uttra:keyframes */
+@keyframes uttra-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes uttra-fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-fade-down { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-slide-in { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes uttra-slide-right { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes uttra-zoom-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+@keyframes uttra-zoom-out { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: scale(1); } }
+@keyframes uttra-pop { 0% { opacity: 0; transform: scale(0.5); } 70% { transform: scale(1.06); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes uttra-flip-x { from { opacity: 0; transform: perspective(600px) rotateX(75deg); } to { opacity: 1; transform: perspective(600px) rotateX(0); } }
+@keyframes uttra-flip-y { from { opacity: 0; transform: perspective(600px) rotateY(75deg); } to { opacity: 1; transform: perspective(600px) rotateY(0); } }
+@keyframes uttra-blur-in { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: blur(0); } }
+@keyframes uttra-rotate-in { from { opacity: 0; transform: rotate(-8deg) scale(0.95); } to { opacity: 1; transform: rotate(0deg) scale(1); } }
+@keyframes uttra-drop-in { 0% { opacity: 0; transform: translateY(-40px); } 60% { opacity: 1; transform: translateY(6px); } 80% { transform: translateY(-3px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-rise { from { opacity: 0; transform: translateY(48px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-unfold { from { opacity: 0; transform: scaleY(0.4); } to { opacity: 1; transform: scaleY(1); } }
+@keyframes uttra-stretch-in { from { opacity: 0; transform: scaleX(0.5); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes uttra-swing-in { 0% { opacity: 0; transform: rotate(-12deg); } 60% { transform: rotate(4deg); } 100% { opacity: 1; transform: rotate(0deg); } }
+@keyframes uttra-curtain { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes uttra-track-in { from { opacity: 0; letter-spacing: 0.35em; } to { opacity: 1; letter-spacing: 0em; } }
+@keyframes uttra-focus-in { from { opacity: 0; filter: blur(4px); transform: scale(1.04); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
+@keyframes uttra-bounce-in { 0% { opacity: 0; transform: scale(0.3); } 50% { opacity: 1; transform: scale(1.05); } 70% { transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes uttra-roll-in { from { opacity: 0; transform: translateX(-60px) rotate(-180deg); } to { opacity: 1; transform: translateX(0) rotate(0deg); } }
+@keyframes uttra-flip-up { from { opacity: 0; transform: perspective(600px) rotateX(-70deg); } to { opacity: 1; transform: perspective(600px) rotateX(0); } }
+@keyframes uttra-door { from { opacity: 0; transform: perspective(600px) rotateY(-70deg); } to { opacity: 1; transform: perspective(600px) rotateY(0); } }
+@keyframes uttra-newspaper { from { opacity: 0; transform: rotate(540deg) scale(0.1); } to { opacity: 1; transform: rotate(0deg) scale(1); } }
+@keyframes uttra-spring-up { 0% { opacity: 0; transform: translateY(40px); } 60% { opacity: 1; transform: translateY(-8px); } 80% { transform: translateY(3px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-zoom-in-up { from { opacity: 0; transform: scale(0.7) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes uttra-twist-in { from { opacity: 0; transform: rotate(-180deg) scale(0.4); } to { opacity: 1; transform: rotate(0deg) scale(1); } }
+@keyframes uttra-skew-in { from { opacity: 0; transform: skewX(-20deg) translateX(-30px); } to { opacity: 1; transform: skewX(0deg) translateX(0); } }
+@keyframes uttra-glide-in { from { opacity: 0; transform: translateX(40px); filter: blur(6px); } to { opacity: 1; transform: translateX(0); filter: blur(0); } }
+@keyframes uttra-whirl-in { from { opacity: 0; transform: rotate(-90deg) scale(0.5); filter: blur(4px); } to { opacity: 1; transform: rotate(0deg) scale(1); filter: blur(0); } }
+@keyframes uttra-materialize { from { opacity: 0; transform: scale(1.3); filter: blur(10px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes uttra-reveal-up { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes uttra-reveal-down { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes uttra-iris { from { clip-path: circle(0% at 50% 50%); } to { clip-path: circle(120% at 50% 50%); } }
+@keyframes uttra-split-reveal { from { clip-path: inset(0 50% 0 50%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes uttra-fall-tilt { from { opacity: 0; transform: translateY(-30px) rotate(8deg); } to { opacity: 1; transform: translateY(0) rotate(0deg); } }
+@keyframes uttra-rise-tilt { from { opacity: 0; transform: translateY(30px) rotate(-6deg); } to { opacity: 1; transform: translateY(0) rotate(0deg); } }
+@keyframes uttra-slide-up-big { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes uttra-flash-in { 0% { opacity: 0; } 30% { opacity: 1; } 55% { opacity: 0.3; } 100% { opacity: 1; } }
+@keyframes uttra-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes uttra-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+@keyframes uttra-glow { 0%, 100% { filter: drop-shadow(0 0 2px currentColor); } 50% { filter: drop-shadow(0 0 12px currentColor); } }
+@keyframes uttra-wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-2.5deg); } 75% { transform: rotate(2.5deg); } }
+@keyframes uttra-shine { to { background-position: 200% center; } }
+@keyframes uttra-bounce { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-14px); } 60% { transform: translateY(-7px); } }
+@keyframes uttra-heartbeat { 0%, 28%, 70%, 100% { transform: scale(1); } 14%, 42% { transform: scale(1.12); } }
+@keyframes uttra-swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes uttra-spin { to { transform: rotate(360deg); } }
+@keyframes uttra-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-3px); } 40% { transform: translateX(3px); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } }
+@keyframes uttra-breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.03); opacity: 0.85; } }
+@keyframes uttra-flicker { 0%, 19%, 22%, 63%, 65%, 100% { opacity: 1; } 20%, 21%, 64% { opacity: 0.35; } }
+@keyframes uttra-rainbow { to { filter: hue-rotate(360deg); } }
+@keyframes uttra-gradient-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes uttra-neon { 0%, 100% { text-shadow: 0 0 6px currentColor; } 50% { text-shadow: 0 0 18px currentColor, 0 0 32px currentColor; } }
+@keyframes uttra-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes uttra-tada { 0%, 100% { transform: scale(1) rotate(0deg); } 10%, 20% { transform: scale(0.95) rotate(-3deg); } 30%, 50%, 70% { transform: scale(1.08) rotate(3deg); } 40%, 60% { transform: scale(1.08) rotate(-3deg); } 80% { transform: scale(1) rotate(0deg); } }
+@keyframes uttra-jelly { 0%, 100% { transform: scale(1, 1); } 25% { transform: scale(0.95, 1.05); } 50% { transform: scale(1.05, 0.95); } 75% { transform: scale(0.98, 1.02); } }
+@keyframes uttra-wave { 0%, 100% { transform: skewX(0deg); } 25% { transform: skewX(3deg); } 75% { transform: skewX(-3deg); } }
+@keyframes uttra-levitate { 0%, 100% { transform: translateY(0); filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.18)); } 50% { transform: translateY(-7px); filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.22)); } }
+@keyframes uttra-tilt { 0%, 100% { transform: perspective(600px) rotateY(-8deg); } 50% { transform: perspective(600px) rotateY(8deg); } }
+@keyframes uttra-squeeze { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(0.94); } }
+@keyframes uttra-radiate { from { box-shadow: 0 0 0 0 rgba(88, 128, 232, 0.35); } to { box-shadow: 0 0 0 14px rgba(88, 128, 232, 0); } }
+@keyframes uttra-sway { 0%, 100% { transform: translateX(-5px); } 50% { transform: translateX(5px); } }
+@keyframes uttra-orbit { 0%, 100% { transform: translate(0, -4px); } 25% { transform: translate(4px, 0); } 50% { transform: translate(0, 4px); } 75% { transform: translate(-4px, 0); } }
+@keyframes uttra-pendulum { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-8deg); } }
+@keyframes uttra-flip-loop { to { transform: perspective(600px) rotateY(360deg); } }
+@keyframes uttra-pulse-glow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(230, 189, 102, 0.5)); } 50% { transform: scale(1.04); filter: drop-shadow(0 0 14px rgba(230, 189, 102, 0.9)); } }
+@keyframes uttra-ripple { 0% { box-shadow: 0 0 0 0 rgba(88, 128, 232, 0.3), 0 0 0 0 rgba(88, 128, 232, 0.2); } 100% { box-shadow: 0 0 0 10px rgba(88, 128, 232, 0), 0 0 0 20px rgba(88, 128, 232, 0); } }
+@keyframes uttra-color-shift { 0%, 100% { filter: hue-rotate(-30deg); } 50% { filter: hue-rotate(30deg); } }
+@keyframes uttra-saturate-pulse { 0%, 100% { filter: saturate(1); } 50% { filter: saturate(2); } }
+@keyframes uttra-brightness-pulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.25); } }
+@keyframes uttra-skew-pulse { 0%, 100% { transform: skewY(0deg); } 50% { transform: skewY(2deg); } }
+@keyframes uttra-stretch-loop { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.06); } }
+@keyframes uttra-drift { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(3px, -3px); } 50% { transform: translate(0, -5px); } 75% { transform: translate(-3px, -2px); } }
+@keyframes uttra-bob { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-6px) rotate(1.5deg); } }
+@keyframes uttra-twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 30% { opacity: 0.6; transform: scale(0.98); } 60% { opacity: 1; } 80% { opacity: 0.75; } }
+@keyframes uttra-vibrate { 0%, 100% { transform: translate(0, 0); } 20% { transform: translate(-1px, 1px); } 40% { transform: translate(1px, -1px); } 60% { transform: translate(-1px, -1px); } 80% { transform: translate(1px, 1px); } }
+@keyframes uttra-rubber { 0%, 100% { transform: scale(1, 1); } 30% { transform: scale(1.25, 0.75); } 40% { transform: scale(0.75, 1.25); } 50% { transform: scale(1.15, 0.85); } 65% { transform: scale(0.95, 1.05); } 75% { transform: scale(1.05, 0.95); } }
+@keyframes uttra-wobble { 0%, 100% { transform: translateX(0) rotate(0deg); } 15% { transform: translateX(-6px) rotate(-4deg); } 30% { transform: translateX(5px) rotate(3deg); } 45% { transform: translateX(-4px) rotate(-2deg); } 60% { transform: translateX(3px) rotate(1deg); } 75% { transform: translateX(-1px) rotate(0deg); } }
+@keyframes uttra-jump { 0%, 35%, 100% { transform: translateY(0) scale(1, 1); } 10% { transform: translateY(0) scale(1.1, 0.9); } 20% { transform: translateY(-12px) scale(0.95, 1.05); } 30% { transform: translateY(0) scale(1.03, 0.97); } }
+@keyframes uttra-squash { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.08, 0.92); } }
+@keyframes uttra-swing-3d { 0%, 100% { transform: perspective(600px) rotateX(-10deg); } 50% { transform: perspective(600px) rotateX(10deg); } }
+@keyframes uttra-carousel { 0%, 100% { transform: perspective(600px) rotateY(-25deg); } 50% { transform: perspective(600px) rotateY(25deg); } }
+@keyframes uttra-beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes uttra-swivel { 0%, 20%, 100% { transform: rotate(0deg); } 5% { transform: rotate(-10deg); } 15% { transform: rotate(8deg); } }
+@keyframes uttra-neon-flicker { 0%, 44%, 50%, 100% { opacity: 1; text-shadow: 0 0 8px currentColor, 0 0 22px currentColor; } 46% { opacity: 0.5; text-shadow: none; } 75% { opacity: 0.85; } }
+@keyframes uttra-bounce-x { 0%, 100% { transform: translateX(0); } 40% { transform: translateX(10px); } 60% { transform: translateX(5px); } }
+@keyframes uttra-ring-pulse { 0%, 100% { box-shadow: 0 0 0 2px rgba(230, 189, 102, 0.55); } 50% { box-shadow: 0 0 0 6px rgba(230, 189, 102, 0.15); } }
+@keyframes uttra-shadow-swing { 0%, 100% { filter: drop-shadow(-6px 6px 4px rgba(0, 0, 0, 0.25)); } 50% { filter: drop-shadow(6px 6px 4px rgba(0, 0, 0, 0.25)); } }
+@keyframes uttra-contrast-pulse { 0%, 100% { filter: contrast(1); } 50% { filter: contrast(1.4); } }
+@keyframes uttra-spiral { 0%, 100% { transform: rotate(0deg) translateY(0); } 25% { transform: rotate(2deg) translateY(-3px); } 50% { transform: rotate(0deg) translateY(-6px); } 75% { transform: rotate(-2deg) translateY(-3px); } }
+@keyframes uttra-glitch { 0%, 100% { transform: translate(0, 0); opacity: 1; } 20% { transform: translate(-2px, 1px) skewX(3deg); } 40% { transform: translate(2px, -1px) skewX(-3deg); opacity: 0.85; } 60% { transform: translate(-1px, -1px); } 80% { transform: translate(1px, 1px) skewX(2deg); } }
+/* @/uttra:keyframes */
+
+/* @uttra:rule a#top */
+a#top {
+  color: #ffffff !important;
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6) !important;
+  animation: uttra-glow 2.4s ease-in-out infinite !important;
+}
+/* @/uttra:rule */
