@@ -12,7 +12,7 @@
 
 .hero { padding-block: var(--s4) var(--s5); background: linear-gradient(180deg, var(--sand), var(--paper)); }
 .hero__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--s4); align-items: center; }
-.hero__text .lead { font-size: 1.15rem; color: var(--muted); margin: var(--s2) 0 var(--s3); max-width: 34em; }
+.hero__text .lead { font-size: 18px; line-height: 1.8; color: #4a4039; margin: var(--s2) 0 var(--s3); max-width: 42ch; }
 .hero__cta { display: flex; gap: var(--s2); flex-wrap: wrap; }
 .proof { list-style: none; padding: 0; display: flex; gap: var(--s4); margin-top: var(--s4); color: var(--muted); }
 .proof b { font-family: var(--font-display); font-size: 1.6rem; color: var(--ink); margin-inline-end: 6px; }
